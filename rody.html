@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى حبيبة عمري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffe6e6; /* لون هادئ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Cairo', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #content {
+            display: none; /* مخفي حتى كتابة الباسوورد */
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 80%;
+            border: 2px solid #ff4d4d;
+        }
+
+        .text-container {
+            font-size: 1.5rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .english-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #ff4d4d;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .signature {
+            font-size: 1rem;
+            color: #888;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        /* أنميشن القلوب */
+        .hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-container"></div>
+
+    <div id="content">
+        <div class="text-container" id="typed-text"></div>
+        <div class="signature">for Rody my nono 🥹</div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.myinstants.com/media/sounds/jah-khalib-kolybelnaia.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        // دالة طلب الباسوورد
+        window.onload = function() {
+            Swal.fire({
+                title: 'ادخلي كلمة السر ❤️',
+                input: 'password',
+                inputAttributes: { autocapitalize: 'off' },
+                confirmButtonText: 'دخول',
+                confirmButtonColor: '#ff4d4d',
+                allowOutsideClick: false,
+                preConfirm: (pass) => {
+                    if (pass === '2462008') {
+                        return true;
+                    } else {
+                        Swal.showValidationMessage('كلمة السر غلط يا رودي 🥺');
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('content').style.display = 'block';
+                    document.getElementById('bgMusic').play();
+                    startTyping();
+                }
+            });
+        };
+
+        function startTyping() {
+            new Typed('#typed-text', {
+                strings: [`رودي انت حبيبة عمري وانا عمري ما كدبت عليكي مكنتيش تستحقي اي قرف حصل مني أو أي غلطة مني <br> 
+                انا غلطت كتير اوي بس اتغيرت ومستعد اعمل اي حاجة عشانك يا حبيبتي بس تسامحيني <br>
+                ربنا يعلم حالتي عاملة ازاي من ساعت ما زعلتك بس والله العظيم ما قادر <br>
+                انا بحبك اوي اوي اوي والله العظيم وعمري ما اتكلمت وحش في وجودك <br>
+                انا اسف على غبائي دايما <br>
+                ودايما هكون احسن عشانك <br>
+                <span class="english-text">Maybe not today <br> Maybe not tomorrow <br> Maybe not after tomorrow <br> But one day إن شاء الله ❤️💍</span>`],
+                typeSpeed: 50,
+                showCursor: false,
+            });
+        }
+    </script>
+</body>
+</html>
